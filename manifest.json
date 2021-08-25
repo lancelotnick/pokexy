@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+
+    "name": "pokexy",
+    "description": "proxy from drrr to discord",
+    "short_name": "pokexy",
+    "version": "0.1",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "/popup/index.html"
+    },
+    "background": {
+        "page": "/background/index.html",
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://drrr.com/room/*"],
+            "run_at": "document_start",
+            "js": ["/js/jquery-3.4.1.min.js"
+                  , "/js/jquery.textcomplete.min.js"
+                  , "/js/data.min.js"
+                  , "/js/data.cn2t.min.js"
+                  , "/js/data.t2cn.min.js"
+                  , "/js/bundle-browser.min.js"
+                  , "/content/room.js"]
+        },
+        {
+            "matches": ["https://discord.com/*", "https://discordapp.com/*"],
+            "run_at": "document_start",
+            "js": [ "/lib/discord-self-bot-console.js"
+                  , "/content/channel.js"]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "storage",
+        "*://drrr.com/*",
+        "*://discord.com/*",
+        "*://discordapp.com/*"
+    ],
+    "optional_permissions": [ "http://*/*", "https://*/*" ]
+}

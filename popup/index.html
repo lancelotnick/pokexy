@@ -1,0 +1,559 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-switch.min.css" rel="stylesheet">
+    <!-- https://fontawesome.com/v4.7.0/icons/ -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/popup/index.css" rel="stylesheet">
+    <link href="/popup/theme.css" rel="stylesheet">
+    <script src="/lib/globals.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap-switch.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/popup/index.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <div class="panel" style="margin: 0px 0px 0px 0px; width: 450px; height:auto;">
+      <div class="panel-heading" style="padding: 0px 0px 0px 0px;">
+        <div class="input-group" sytle="width:auto;">
+
+          <div class="input-group-btn">
+            <button id="goto-repo" class="btn btn-default manual panel-heading-button" type="submit" title="GoTo Repository">
+              <i class="glyphicon glyphicon-flag"></i>
+            </button>
+            <!--
+            <button id="video-guide" class="btn btn-default manual panel-heading-button" type="submit"
+                                                                    title="GoTo Video Guide">
+              <i class="fa fa-youtube-play" aria-hidden="true"></i>
+            </button>
+            -->
+          </div>
+
+          <p style="text-align:center;margin-bottom: 0px; display: table-cell; vertical-align: middle;"> durarara to discord proxy </p>
+          <!--
+            <div class="input-group-btn">
+            <button id="tent" class="btn btn-default cog" type="submit"
+            title="set the hidden room">
+            <i class="glyphicon glyphicon-tent"></i>
+            </button>
+            </div>
+          -->
+
+          <div class="input-group-btn">
+            <!--
+            <button id="program" class="btn btn-default cog panel-heading-button" type="submit"
+                                                             title="Write Script">
+              <i class="glyphicon glyphicon-console"></i>
+            </button>
+            -->
+            <button id="goto-dc" class="btn btn-default cog panel-heading-button" type="submit"
+                                                         title="GoTo Our Discord Server">
+              <i class="glyphicon glyphicon-tent"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+
+        <div id="switch_panel"></div>
+
+        <hr>
+
+        <ul class="nav nav-tabs nav-justified">
+          <li id="tab1" class="pop-tab active"><a data-toggle="tab" href="#tab1-cont">Bio</a></li>
+          <!--
+          <li id="tab2" class="pop-tab"><a data-toggle="tab" href="#tab2-cont">Friends</a></li>
+          <li id="tab0" class="pop-tab"><a data-toggle="tab" href="#tab0-cont">Music</a></li>
+          <li id="tab3" class="pop-tab"><a data-toggle="tab" href="#tab3-cont">Mod</a></li>
+          <li id="tab5" class="pop-tab"><a data-toggle="tab" href="#tab5-cont">Plug</a></li>
+          <li id="tab4" class="pop-tab"><a data-toggle="tab" href="#tab4-cont">Sticker</a></li>
+          -->
+        </ul>
+
+        <div class="tab-content">
+          <div id="tab0-cont" class="tab-pane fade">
+            <br>
+            <div class="input-group">
+
+              <div class="input-group-btn">
+                <button id="music_mode" class="btn btn-default" type="button"
+                                                                title='album mode, continue playing if any song in playlist'>
+                  <i id="mode_type" class="glyphicon glyphicon-cd"></i>
+                </button>
+              </div>
+
+              <select id="music_source" name="source" class="form-control"
+                                                      style="width:46px; text-align:center; padding-left: 4px; padding-right: 4px; padding-top: 4px;"
+                                                      title="music source">
+              </select>
+
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+              <input id="keyword" type="text"
+                                  class="form-control" placeholder="Search Keyword">
+
+              <div class="input-group-btn">
+                <button id="music_list_opener" class="btn btn-default" type="button"
+                                                                       data-delayed-toggle="collapse" data-target="#music_list"
+                                                                                                      title="show playlist">
+                  <i id="list_type" class="glyphicon glyphicon-list"></i>
+                </button>
+                <button id="play_search" class="btn btn-default" data-target="#music_list"
+                                                                 type="submit" title="play first song in playlist">
+                  <i class="glyphicon glyphicon-play"></i>
+                </button>
+                <button id="fav_add_search" class="btn btn-default" type="submit"
+                                                                    data-delayed-toggle="collapse" data-target="#music_list"
+                                                                                                   title="show favorite songs">
+                  <i id="fav_add_icon" class="glyphicon glyphicon-heart"></i>
+                </button>
+                <button id="custom_api" class="btn btn-default" type="submit" title="custom your YouTube api URL">
+                  <i class="glyphicon glyphicon-link"></i>
+                </button>
+              </div>
+            </div>
+            <div id="music_list" class="collapse">
+              <div class="row" style="height:100%">
+                <div class="col-md-4">
+                  <div class="list-group" style="margin-bottom: 0px;">
+                    <hr>
+                    <div id='list_container'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div id="tab1-cont" class="tab-pane fade active in">
+            <br>
+
+            <div class="input-group">
+
+              <select id="proxy_mode" name="conv_mode" class="form-control" style="text-align:center;padding-left: 4px;padding-right: 0px;padding-top: 4px;width: 41px;" title="proxy mode">
+                <option value="明人">明人</option>
+                <option value="暗人">暗人</option>
+                <option value="明房">明房</option>
+                <option value="暗房">暗房</option>
+              </select>
+
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+              <input id="guildId" type="text" class="form-control" placeholder="guild id" readonly>
+
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+              <input id="channelId" type="text" class="form-control" placeholder="channel id" readonly>
+              <div class="input-group-btn">
+                <button id="channel-del" class="btn btn-default" type="button" title="Clear ID settings">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </button>
+                <button id="channel-set" class="btn btn-default" type="button" title="Input Channel URL">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </button>
+              </div>
+            </div>
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button id="proxy-switch-btn" class="btn btn-default" title="Enable/Disable">
+                  <i id="proxy-switch" class="fa fa-toggle-off" aria-hidden="true"></i>
+                </button>
+              </div>
+              <input id="Authorization" type="text" class="form-control" placeholder="Authorization Token" readonly>
+              <div class="input-group-btn">
+                <button id="authtoken-del" class="btn btn-default" type="button" title="Clear Authorization Token">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </button>
+                <button id="authtoken-get" class="btn btn-default" type="button" title="Get Authorization Token">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="tab5-cont" class="tab-pane fade">
+            <br>
+            <div class="input-group">
+
+              <!--
+              <div class="input-group-btn">
+              </div>
+              -->
+
+              <select id="local-select"
+                      class="form-control"
+                      data-target="#local_list"
+                      style="text-align:center; text-align-last:center;"
+                      title="select local plugin">
+              </select>
+
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+              <div class="input-group-btn">
+                <button id="local-setting-btn" class="btn btn-default" type="button" title='GoTo Local Setting'>
+                  <i id="local-setting" class="glyphicon glyphicon-bookmark"></i>
+                </button>
+                <button id="local-switch-btn" class="btn btn-default" title="Enable/Disable">
+                  <i id="local-switch" class="fa fa-toggle-off" aria-hidden="true"></i>
+                </button>
+                <!--
+                  <button id="game-cog" class="btn btn-default" type="button" title='nothing'>
+                  <i class="glyphicon glyphicon-cog"></i>
+                  </button>
+                -->
+              </div>
+
+            </div>
+            <div id="local_list" class="collapse">
+              <div class="row" style="height:100%">
+                <div class="col-md-4">
+                  <div class="list-group" style="margin-bottom: 0px;">
+                    <hr>
+                    <div id='local_list_container'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button id="reset_plugin" class="btn btn-default" type="button"
+                        title='reset built-in plugins'>
+                  <i class="glyphicon glyphicon-refresh"></i>
+                </button>
+              </div>
+
+              <select id="plugin-select"
+                      class="form-control"
+                      data-target=""
+                      style="text-align:center;"
+                      title="select plugins">
+              </select>
+
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+              <div class="input-group-btn">
+                <button id="del_plugin" class="btn btn-default"
+                        type="submit" title="del the selected plugin">
+                  <i id="" class="glyphicon glyphicon-minus"></i>
+                </button>
+                <button id="add_plugin" class="btn btn-default"
+                        type="submit" title="add plugin by URL or code">
+                  <i id="" class="glyphicon glyphicon-plus"></i>
+                </button>
+                <button id="write_plugin" class="btn btn-default"
+                        type="submit" title="edit plugin (URL/code)">
+                  <i id="" class="glyphicon glyphicon-pencil"></i>
+                </button>
+                <button id="plugin-switch-btn" class="btn btn-default" title="Enable/Disable">
+                  <i id="plugin-switch" class="fa fa-toggle-off" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id='plugin-codeblock' style="display:none">
+              <hr>
+              <textarea id="plugin-code" style="width: 100%" rows="5" disabled></textarea>
+              <br>
+              <button id='save-plugin' style="float: right; display:none">save</button>
+            </div>
+
+          </div>
+
+          <div id="tab2-cont" class="tab-pane fade">
+            <br>
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button id="eager_type_btn" class="btn btn-default" type="button">
+                  <i id="eager_type" class="glyphicon glyphicon-user"></i>
+                </button>
+              </div>
+
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+              <input id="eager-input" type="text" class="form-control" placeholder="regex here">
+
+              <div class="input-group-btn">
+                <button id="eager-set" class="btn btn-default" type="button" title="set the jump rule">
+                  <i class="glyphicon glyphicon glyphicon-tag"></i>
+                </button>
+                <button id="eager-ask" class="btn btn-default" type="button" title="ask before jump">
+                  <i id="eager-ask-icon" class="glyphicon glyphicon-comment"></i>
+                </button>
+              </div>
+            </div>
+
+
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button id="fb_rule_type_btn" class="btn btn-default" type="button"
+                                                                      title='change the rule type'>
+                  <i id="fb_rule_type" class="glyphicon glyphicon-user"></i>
+                </button>
+              </div>
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+              <input id="fb-input" type="text"
+                                   class="form-control" placeholder="rule here">
+
+              <div class="input-group-btn">
+
+                <button id="fb-search-opener"
+                        class="btn btn-default fb-opener fb-on-input"
+                        data-target="#fb_list" type="submit" title="search by rule">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+
+                <button id="fb-add-rule"
+                        class="btn btn-default fb-on-input"
+                        type="submit" data-delayed-toggle="collapse" data-target="#fb_list" title="add by rule">
+                  <i id="" class="glyphicon glyphicon-plus"></i>
+                </button>
+
+                <!--
+                  <button id="fb-rule-opener"
+                  class="btn btn-default fb-opener fb-off-input"
+                  type="button" data-delayed-toggle="collapse" data-target="#fb_list" title="show rules">
+                  <i class="glyphicon glyphicon-list"></i>
+                  </button>
+                  <button id="tripcode-opener"
+                  class="btn btn-default fb-opener fb-off-input"
+                  type="button" data-delayed-toggle="collapse" data-target="#fb_list" title="show tripcode list">
+                  <i class="glyphicon glyphicon-lock fb-off-input"></i>
+                  </button>
+                  <button id="friend-opener"
+                  class="btn btn-default fb-opener fb-off-input"
+                  type="button" data-delayed-toggle="collapse" data-target="#fb_list" title="show friend list">
+                  <i class="glyphicon glyphicon-user fb-off-input"></i>
+                  </button>
+                  <button id="home-opener" class="btn btn-default fb-opener fb-off-input" data-target="#fb_list"
+                  type="submit" title="show home">
+                  <i class="glyphicon glyphicon-home"></i>
+                  </button>
+                  <button id="room-opener"
+                  class="btn btn-default fb-opener"
+                  data-target="#fb_list" type="submit" title="show all room">
+                  <i class="glyphicon glyphicon-globe"></i>
+                  </button>
+                -->
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button id="annoying-hidder" class="btn btn-default" type="button">
+                  <i class="glyphicon glyphicon-eye-close"></i>
+                </button>
+              </div>
+
+              <button class="btn btn-default form-control rule-note">
+                <i id="rule-note-icon" class="glyphicon glyphicon-volume-up"></i>
+                NOTIFICATION
+              </button>
+
+              <!-- <input type="button" class="btn btn-default form-control rule-note" value="NOTIFICATION"> -->
+
+              <!--
+                <input id="fb-input" type="text"
+                class="form-control" placeholder="">
+              -->
+
+              <div class="input-group-btn ">
+                <!--
+                  <button id="fb-search-opener"
+                  class="btn btn-default fb-opener fb-on-input"
+                  data-target="#fb_list" type="submit" title="search by rule">
+                  <i class="glyphicon glyphicon-search"></i>
+                  </button>
+
+                  <button id="fb-add-rule"
+                  class="btn btn-default fb-on-input"
+                  type="submit" data-delayed-toggle="collapse" data-target="#fb_list" title="add by rule">
+                  <i id="" class="glyphicon glyphicon-plus"></i>
+                  </button>
+                -->
+
+                <button id="fb-rule-opener"
+                        class="btn btn-default fb-opener fb-off-input"
+                        type="button" data-delayed-toggle="collapse" data-target="#fb_list" title="show rules">
+                  <i class="glyphicon glyphicon-list"></i>
+                </button>
+
+                <button id="tripcode-opener"
+                        class="btn btn-default fb-opener fb-off-input"
+                        type="button" data-delayed-toggle="collapse" data-target="#fb_list" title="show tripcode list">
+                  <i class="glyphicon glyphicon-lock fb-off-input"></i>
+                </button>
+                <button id="friend-opener"
+                        class="btn btn-default fb-opener fb-off-input"
+                        type="button" data-delayed-toggle="collapse" data-target="#fb_list" title="show friend list">
+                  <i class="glyphicon glyphicon-user fb-off-input"></i>
+                </button>
+                <button id="home-opener" class="btn btn-default fb-opener fb-off-input" data-target="#fb_list"
+                                                                                        type="submit" title="show home">
+                  <i class="glyphicon glyphicon-home"></i>
+                </button>
+                <button id="room-opener"
+                        class="btn btn-default fb-opener"
+                        data-target="#fb_list" type="submit" title="show all room">
+                  <i class="glyphicon glyphicon-globe"></i>
+                </button>
+              </div>
+            </div>
+
+
+            <div id="fb_list" class="collapse">
+              <div class="row" style="height:100%">
+                <div class="col-md-4">
+                  <div class="list-group" style="margin-bottom: 0px;">
+                    <hr>
+                    <div id='fb_list_container'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="tab3-cont" class="tab-pane fade">
+            <br>
+            <div class="input-group">
+
+              <div class="input-group-btn">
+                <button id="goto-dc" class="btn btn-default" type="button" title='GoTo our Discord Server'>
+                  <i id="game-tent" class="glyphicon glyphicon-tent"></i>
+                </button>
+                <button id="tripgen" class="btn btn-default" title="tripcode generator">
+                  <i class="glyphicon glyphicon-qrcode"></i>
+                </button>
+              </div>
+
+              <select id="module-select"
+                      class="form-control"
+                      data-target="#module_list"
+                      style="text-align:center; text-align-last:center;"
+                      title="select game">
+              </select>
+
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+              <div class="input-group-btn">
+                <button id="wizard" class="btn btn-default" type="submit"
+                                                            title="Calling Wizard">
+                  <!-- <i class="glyphicon glyphicon-bookmark"></i> -->
+                  <i class="fa fa-paw" aria-hidden="true"></i>
+                </button>
+                <button id="wizard-size" class="btn btn-default" title="Set Wizard Size">
+                  <i class="glyphicon glyphicon-resize-full"></i>
+                </button>
+                <button id="live2d" class="btn btn-default" type="submit"
+                                                            title="Set Wizard Model URL">
+                  <!-- <i class="glyphicon glyphicon-bookmark"></i> -->
+                  <i class="glyphicon glyphicon-link"></i>
+                </button>
+                <!--
+                  <button id="game-cog" class="btn btn-default" type="button" title='nothing'>
+                  <i class="glyphicon glyphicon-cog"></i>
+                  </button>
+                -->
+              </div>
+
+            </div>
+            <div id="module_list" class="collapse">
+              <div class="row" style="height:100%">
+                <div class="col-md-4">
+                  <div class="list-group" style="margin-bottom: 0px;">
+                    <hr>
+                    <div id='module_list_container'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="tab4-cont" class="tab-pane fade">
+            <br>
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button id="reset-sticker" class="btn btn-default" type="button" title='reset stickers'>
+                  <i class="glyphicon glyphicon-refresh"></i>
+                </button>
+              </div>
+
+              <select id="store_stickers"
+                      class="form-control"
+                      data-target="#sticker_list"
+                      style="text-align:center;"
+                      title="select sticker set">
+              </select>
+
+              <span class="input-group-addon" style="width:0px; padding-left:0px; padding-right:0px; border:none;"></span>
+
+              <div class="input-group-btn">
+                <button id="del_sticker" class="btn btn-default" type="submit" title="del the selected sticker">
+                  <i id="" class="glyphicon glyphicon-minus"></i>
+                </button>
+                <button id="add_sticker" class="btn btn-default" type="submit" title="add sticker by URL">
+                  <i id="" class="glyphicon glyphicon-plus"></i>
+                </button>
+                <button id="sticker-store-opener" class="btn btn-default" type="submit" title="goto store">
+                  <i class="glyphicon glyphicon-shopping-cart"></i>
+                </button>
+              </div>
+            </div>
+            <div id="sticker_list" class="collapse">
+              <div class="row" style="height:100%">
+                <div class="col-md-4">
+                  <div class="list-group" style="margin-bottom: 0px;">
+                    <hr>
+                    <div id='sticker_list_container'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- image uploader: the <input type="file"/> need be newed in background page,
+          and It may cost my a lot of time to try,
+          and fetch key on https://api.imgbb.com/ may have some considerations
+        -->
+        <!--
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+          <input type="text" class="form-control" placeholder="Upload Image" disabled>
+          <div class="input-group-btn">
+          <label id="upload-pic" class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-circle-arrow-up"></i>
+          <input type="file" id="file-uploader" data-target="file-uploader" accept="image/*" multiple="multiple" hidden/>
+          </label>
+          <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-paste"></i>
+          </button>
+          </div>
+          </div>
+          <br>
+
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-cd"></i></span>
+          <input type="text" class="form-control" placeholder="Play playlist by ID">
+          <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-play"></i>
+          </button>
+          <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-time"></i>
+          </button>
+          </div>
+          </div>
+          <br>
+        -->
+
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
+<!-- https://drrr.chat/d/129-command-list-like-night -->
